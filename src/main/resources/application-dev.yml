@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/boot
+    username: root
+    password: 123456
+server:
+  servlet:
+    context-path: /
+mybatis-plus:
+  # 支持统配符 * 或者 ; 分割
+  typeEnumsPackage: com.joey.boot.**.enums
