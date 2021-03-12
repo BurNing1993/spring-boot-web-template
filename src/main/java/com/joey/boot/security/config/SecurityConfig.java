@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     @Override
-    public AuthenticationManager authenticationManager() throws Exception {
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
@@ -57,14 +57,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 禁用 CSRF
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/auth/**", "/public/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/auth/**", "/public/**").anonymous()
                 //  指定路径下的资源需要验证了的用户才能访问
                 .antMatchers(HttpMethod.GET).permitAll()
                 .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                 // 其他都验证 TODO
                 .anyRequest().authenticated()
                 .and()
-                .addFilter(new AuthTokenFilter(authenticationManager(),tokenManager))
                 .httpBasic();
     }
 }

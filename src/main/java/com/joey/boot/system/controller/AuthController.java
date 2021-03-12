@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author EDZ
@@ -25,8 +27,10 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginRequest loginRequest) {
-        log.info("LoginRequest:"+loginRequest.toString());
+        log.info("LoginRequest:" + loginRequest.toString());
         String token = loginService.login(loginRequest);
-        return ResponseEntity.ok(token);
+        Map<String, String> result = new HashMap<>(8);
+        result.put("token", token);
+        return ResponseEntity.ok(result);
     }
 }
