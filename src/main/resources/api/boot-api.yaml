@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: Boot
+  description: Boot
+  version: 0.0.1
+servers:
+  - url: 'http://localhost:8080/'
+tags:
+  - name: common
+    description: 通用接口
+paths:
+  /common/upload:
+    post:
+      tags:
+        - common
+      summary: 上传单文件
+      operationId: upload
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        200:
+          description: ok
+        402:
+          description: PAYMENT_REQUIRED-上传的文件为空
+        500:
+          description: INTERNAL_SERVER_ERROR-上传失败
+  /common/uploads:
+    post:
+      tags:
+        - common
+      summary: 上传多文件
+      operationId: uploads
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        200:
+          description: ok
+        402:
+          description: PAYMENT_REQUIRED-上传的文件为空
+        500:
+          description: INTERNAL_SERVER_ERROR-上传失败
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+
+# 2) Apply the security globally to all operations
+security:
+  - bearerAuth: []         # use the same name as above
+
+  

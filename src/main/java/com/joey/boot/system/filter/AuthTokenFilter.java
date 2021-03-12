@@ -1,6 +1,6 @@
-package com.joey.boot.security.filter;
+package com.joey.boot.system.filter;
 
-import com.joey.boot.security.utils.TokenManager;
+import com.joey.boot.system.utils.TokenManager;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author EDZ
+ * @author Joey
  */
 public class AuthTokenFilter extends BasicAuthenticationFilter {
 

@@ -5,7 +5,7 @@ import com.joey.boot.system.entity.enums.RoleEnum;
 import lombok.Data;
 
 /**
- * @author EDZ
+ * @author Joey
  */
 @Data
 @TableName("user")

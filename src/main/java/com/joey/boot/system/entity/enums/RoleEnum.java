@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @author EDZ
+ * @author Joey
  * 角色
  */
 public enum RoleEnum {

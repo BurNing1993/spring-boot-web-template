@@ -1,8 +1,8 @@
 package com.joey.boot.system.service.impl;
 
 import com.joey.boot.common.exception.LoginFailException;
-import com.joey.boot.security.entity.SecurityUser;
-import com.joey.boot.security.utils.TokenManager;
+import com.joey.boot.system.entity.SecurityUser;
+import com.joey.boot.system.utils.TokenManager;
 import com.joey.boot.system.entity.request.LoginRequest;
 import com.joey.boot.system.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
@@ -13,10 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-
 /**
- * @author EDZ
+ * @author Joey
  */
 @Service
 @Slf4j

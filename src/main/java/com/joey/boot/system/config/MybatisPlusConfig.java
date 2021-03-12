@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author EDZ
+ * @author Joey
  */
 @Configuration
 @MapperScan("com.joey.boot.**.mapper")

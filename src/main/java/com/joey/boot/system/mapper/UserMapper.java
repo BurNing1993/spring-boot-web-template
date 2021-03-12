@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.joey.boot.system.entity.dao.UserDO;
 
 /**
- * @author EDZ
+ * @author Joey
  */
 public interface UserMapper extends BaseMapper<UserDO> {
 }

@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * @author EDZ
+ * @author Joey
  */
 @ResponseStatus(HttpStatus.UNAUTHORIZED)
 public class LoginFailException extends RuntimeException {

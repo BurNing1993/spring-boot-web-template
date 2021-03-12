@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.Date;
 
 /**
- * @author EDZ
+ * @author Joey
  */
 @Getter
 @Setter

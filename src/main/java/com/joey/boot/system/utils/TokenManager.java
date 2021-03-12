@@ -1,4 +1,4 @@
-package com.joey.boot.security.utils;
+package com.joey.boot.system.utils;
 
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
- * @author EDZ
+ * @author Joey
  */
 @Component
 @Slf4j

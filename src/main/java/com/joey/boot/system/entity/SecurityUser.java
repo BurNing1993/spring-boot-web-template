@@ -1,4 +1,4 @@
-package com.joey.boot.security.entity;
+package com.joey.boot.system.entity;
 
 import com.joey.boot.system.entity.dao.UserDO;
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @author EDZ
+ * @author Joey
  */
 @Data
 public class SecurityUser implements UserDetails {

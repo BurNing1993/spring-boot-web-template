@@ -1,8 +1,7 @@
 package com.joey.boot.system.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.joey.boot.security.entity.SecurityUser;
+import com.joey.boot.system.entity.SecurityUser;
 import com.joey.boot.system.entity.dao.UserDO;
 import com.joey.boot.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
- * @author EDZ
+ * @author Joey
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

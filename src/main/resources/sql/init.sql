@@ -4,9 +4,9 @@ CREATE TABLE user
 (
     `id`          bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
     `username`    varchar(30) NOT NULL COMMENT '用户名',
-    `password`    varchar(30) NOT NULL COMMENT '用户名',
-    `nickname`    varchar(30) NOT NULL COMMENT '昵称',
-    `role`        int(2) NOT NULL COMMENT '角色',
+    `password`    varchar(64) NOT NULL COMMENT '用户名',
+    `nickname`    varchar(30)          DEFAULT NULL COMMENT '昵称',
+    `role`        int(2) DEFAULT NULL COMMENT '角色',
     `deleted`     tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除(1-已删除 0-未删除)',
     `create_time` timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `update_time` timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
