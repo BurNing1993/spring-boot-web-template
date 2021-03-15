@@ -37,4 +37,14 @@ router.beforeEach(async (to, from) => {
     }
   }
 })
- 
+
+router.afterEach((to, from) => {
+  const role = store.getters.role
+  const ROLE_ADMIN = 'ADMIN'
+  console.log(to.meta.auth);
+  console.log(role);
+  if (to.meta.auth && role !== ROLE_ADMIN) {
+    router.replace('/login')
+    return false;
+  }
+})

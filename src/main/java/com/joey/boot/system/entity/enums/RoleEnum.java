@@ -14,19 +14,22 @@ public enum RoleEnum {
     /**
      * 角色
      */
-    ADMIN(0, "管理员"),
-    USER(1, "用户");
+    ADMIN(0, "ADMIN","管理员"),
+    USER(1, "USER","用户");
 
     /**
      * 标记数据库存的值是code
      */
     @EnumValue
     private final int code;
-    @JsonValue
-    private final String name;
 
-    RoleEnum(int code, String name) {
+    private final String name;
+    @JsonValue
+    private final String desc;
+
+    RoleEnum(int code, String name,String desc) {
         this.code = code;
         this.name = name;
+        this.desc = desc;
     }
 }

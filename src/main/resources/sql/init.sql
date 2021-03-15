@@ -15,4 +15,4 @@ CREATE TABLE user
 );
 
 INSERT INTO `boot`.`user`(`id`, `username`, `password`, `nickname`, `role`, `deleted`, `create_time`, `update_time`)
-VALUES (1, 'admin', 'admin', 'admin', 0, 0, '2021-03-11 15:08:36', '2021-03-11 15:08:36');
+VALUES (1, 'admin', '$2a$10$6dbXofarztEj16dK2uh.7eRt70ZzkjPaHKvCqTERP4CyPPVyz2YUe', 'admin', 0, 0, '2021-03-11 15:08:36', '2021-03-11 15:08:36');

@@ -21,7 +21,7 @@ public class RoleController {
     @GetMapping("")
     public ResponseEntity getRoleList() {
         List<RoleVO> roleVOList = Arrays.stream(RoleEnum.values())
-                .map(roleEnum -> new RoleVO(roleEnum.getName(), roleEnum.getCode()))
+                .map(roleEnum -> new RoleVO(roleEnum.getName(),roleEnum.getDesc(), roleEnum.getCode()))
                 .collect(Collectors.toList());
         return ResponseEntity.ok(roleVOList);
     }

@@ -24,7 +24,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -53,24 +53,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
+    /**
+     * 异常处理
+     * http.exceptionHandling()
+     *         .authenticationEntryPoint(new AuthenticationEntryPointHandler())
+     *         .accessDeniedHandler(new AuthAccessDeniedHandler());
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and()
                 // 禁用 CSRF
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/auth/**", "/public/**").permitAll()
-                .antMatchers(HttpMethod.GET).permitAll()
-                .antMatchers(HttpMethod.DELETE).hasRole("ROLE_ADMIN")
+                .antMatchers(HttpMethod.POST, "/auth/**").permitAll()
+                .antMatchers("/public/**").permitAll()
+                .antMatchers("/role/**", "/user/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                 // 其他都验证 TODO
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
         // filter
         http.addFilter(new AuthTokenFilter(authenticationManager(), tokenManager));
-        // 异常处理
-        http.exceptionHandling()
-                .authenticationEntryPoint(new AuthenticationEntryPointHandler())
-                .accessDeniedHandler(new AuthAccessDeniedHandler());
     }
 }

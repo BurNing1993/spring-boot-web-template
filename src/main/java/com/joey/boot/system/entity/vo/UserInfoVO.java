@@ -10,5 +10,5 @@ import lombok.Data;
 public class UserInfoVO {
     private String username;
     private String nickname;
-    private RoleEnum role;
+    private RoleVO role;
 }

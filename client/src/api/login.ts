@@ -1,5 +1,6 @@
 import { AxiosPromise } from 'axios'
 import request from '../utils/request'
+import { Role } from './role'
 
 export interface LoginData {
   username: string
@@ -25,7 +26,7 @@ export interface MenuItem {
 export interface UserInfo {
   username: string
   nickname: string
-  role: string
+  role: Role
   avatar?: string
 }
 // 获取用户信息

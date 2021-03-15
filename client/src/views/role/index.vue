@@ -2,6 +2,7 @@
   <el-table v-loading="loading" :data="list" style="width: 100%">
     <el-table-column prop="code" label="code" show-overflow-tooltip />
     <el-table-column prop="name" label="name" show-overflow-tooltip />
+    <el-table-column prop="desc" label="desc" show-overflow-tooltip />
   </el-table>
 </template>
 

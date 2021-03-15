@@ -10,5 +10,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class RoleVO {
     private String name;
+    private String desc;
     private Integer code;
 }

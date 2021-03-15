@@ -2,6 +2,7 @@ package com.joey.boot.system.entity;
 
 import com.joey.boot.system.entity.dao.UserDO;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +16,7 @@ import java.util.List;
  */
 @Data
 public class SecurityUser implements UserDetails {
+    private static String defaultRolePrefix = "ROLE_";
     /**
      * 当前登录用户
      */
@@ -32,7 +34,7 @@ public class SecurityUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(user.getRole().name()));
+        authorities.add(new SimpleGrantedAuthority(defaultRolePrefix+user.getRole().name()));
         return authorities;
     }
 

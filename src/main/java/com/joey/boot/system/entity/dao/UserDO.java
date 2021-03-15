@@ -1,5 +1,7 @@
 package com.joey.boot.system.entity.dao;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.joey.boot.system.entity.enums.RoleEnum;

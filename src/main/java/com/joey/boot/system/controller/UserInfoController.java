@@ -1,6 +1,8 @@
 package com.joey.boot.system.controller;
 
 import com.joey.boot.system.entity.dao.UserDO;
+import com.joey.boot.system.entity.enums.RoleEnum;
+import com.joey.boot.system.entity.vo.RoleVO;
 import com.joey.boot.system.entity.vo.UserInfoVO;
 import com.joey.boot.system.service.UserService;
 import com.joey.boot.system.utils.TokenManager;
@@ -30,6 +32,8 @@ public class UserInfoController {
         UserDO userDO = userService.getById(payload);
         UserInfoVO userInfoVO = new UserInfoVO();
         BeanUtils.copyProperties(userDO,userInfoVO);
+        RoleEnum roleEnum = userDO.getRole();
+        userInfoVO.setRole(new RoleVO(roleEnum.getName(),roleEnum.getDesc(),roleEnum.getCode()));
         return ResponseEntity.ok(userInfoVO);
     }
 }

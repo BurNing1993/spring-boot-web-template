@@ -43,7 +43,7 @@ const user: Module<State, RootState> = {
       const { username, role, nickname } = payload
       state.username = username
       state.nickname = nickname
-      state.role = role
+      state.role = role.name
     },
     RESET: (state) => {
       localStorage.removeItem(LOCAL_TOKEN)

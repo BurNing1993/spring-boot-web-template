@@ -1,5 +1,6 @@
 package com.joey.boot.system.handler;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
@@ -11,10 +12,12 @@ import java.io.IOException;
 /**
  * @author Joey
  */
+@Slf4j
 public class AuthAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
         accessDeniedException = new AccessDeniedException("Sorry you don not enough permissions to access it!");
-        response.sendError(HttpServletResponse.SC_CONFLICT, accessDeniedException.getMessage());
+        log.error(String.valueOf(accessDeniedException));
+        response.sendError(HttpServletResponse.SC_FORBIDDEN, accessDeniedException.getMessage());
     }
 }

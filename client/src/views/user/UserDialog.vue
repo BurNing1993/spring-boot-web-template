@@ -41,7 +41,7 @@
             v-for="role in roleList"
             :key="role.code"
             :value="role.code"
-            :label="role.name"
+            :label="role.desc"
           ></el-option>
         </el-select>
       </el-form-item>

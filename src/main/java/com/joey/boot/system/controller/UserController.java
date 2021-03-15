@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,15 +32,23 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * @PreAuthorize("hasRole('ADMIN')")
+     * @param params
+     * @return
+     */
     @GetMapping("/page")
-    @Secured({"ADMIN"})
     public ResponseEntity getUserPage(BasePageParams params) {
         IPage<UserDO> userPage = userService.getPage(new Page<>(params.getCurrent(), params.getSize()), null);
         return ResponseEntity.ok(userPage);
     }
 
+    /**
+     *  @PreAuthorize("hasAuthority('ADMIN')")
+     * @param userRequest
+     * @return
+     */
     @PostMapping("")
-    @Secured({"ROLE_ADMIN"})
     public ResponseEntity addUser(@Valid @RequestBody UserRequest userRequest) {
         log.info("UserRequest : {}", userRequest.toString());
         UserDO userOne = userService.getOne(new QueryWrapper<UserDO>().lambda().eq(UserDO::getUsername, userRequest.getUsername()));
