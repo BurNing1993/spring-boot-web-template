@@ -24,7 +24,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -59,10 +59,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 禁用 CSRF
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/auth/**", "/public/**").anonymous()
-                //  指定路径下的资源需要验证了的用户才能访问
+                .antMatchers(HttpMethod.POST, "/auth/**", "/public/**").permitAll()
                 .antMatchers(HttpMethod.GET).permitAll()
-                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE).hasRole("ROLE_ADMIN")
                 // 其他都验证 TODO
                 .anyRequest().authenticated()
                 .and()

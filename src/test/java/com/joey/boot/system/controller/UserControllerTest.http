@@ -1,0 +1,9 @@
+ ###
+POST http://localhost:9000/user
+Content-Type: application/json
+
+{
+  "username": "joey1224",
+  "nickname": "joey1231",
+  "role": 1
+}

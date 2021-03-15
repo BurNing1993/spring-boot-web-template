@@ -2,11 +2,14 @@ package com.joey.boot.system.entity.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.Data;
+import lombok.Getter;
 
 /**
  * @author Joey
  * 角色
  */
+@Getter
 public enum RoleEnum {
     /**
      * 角色

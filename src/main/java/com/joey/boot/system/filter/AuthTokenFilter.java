@@ -30,6 +30,5 @@ public class AuthTokenFilter extends BasicAuthenticationFilter {
             tokenManager.validateToken(request);
         }
         chain.doFilter(request, response);
-
     }
 }

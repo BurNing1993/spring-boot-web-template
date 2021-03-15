@@ -1,0 +1,25 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.page{
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.query{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.query .el-form-item {
+  margin-bottom: 0;
+}
+
+button:active,button:focus{
+  outline: none;
+}

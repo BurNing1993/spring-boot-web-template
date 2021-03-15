@@ -11,7 +11,8 @@ spring:
       static-locations: [ "file:D:/static/" ]
 server:
   servlet:
-    context-path: /
+    context-path: /api
+  port: 9000
 mybatis-plus:
   global-config:
     db-config:
