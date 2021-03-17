@@ -49,11 +49,11 @@ function handleRequestError(response: AxiosResponse<any>) {
   let msg = `${statusText}:${errorMsg || 'oops,出错了!'}`
   switch (status) {
     case 401:
+    case 403:
       router.replace("/login")
       break;
     default:
       break;
   }
   ElMessage.error(msg)
-
 }

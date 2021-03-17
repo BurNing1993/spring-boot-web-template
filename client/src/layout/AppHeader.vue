@@ -56,12 +56,12 @@
             <router-link to="/">
               <el-dropdown-item>Home</el-dropdown-item>
             </router-link>
-            <a
+            <!-- <a
               href="https://github.com/BurNing1993/vue-element-admin-plus"
               target="_blank"
             >
               <el-dropdown-item divided>Github</el-dropdown-item>
-            </a>
+            </a> -->
             <div @click="logout">
               <el-dropdown-item divided>Logout</el-dropdown-item>
             </div>

@@ -11,7 +11,8 @@ import javax.validation.constraints.Size;
  * @author Joey
  */
 @Data
-public class UserRequest {
+public class UserRequest extends BasePageParams{
+    private Long id;
     @NotBlank(message = "账号不能为空")
     @Size(min = 4, max = 16, message = "账号为4~16位")
     private String username;

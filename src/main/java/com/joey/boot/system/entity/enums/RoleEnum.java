@@ -23,8 +23,9 @@ public enum RoleEnum {
     @EnumValue
     private final int code;
 
-    private final String name;
     @JsonValue
+    private final String name;
+
     private final String desc;
 
     RoleEnum(int code, String name,String desc) {

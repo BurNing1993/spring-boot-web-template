@@ -1,10 +1,8 @@
 package com.joey.boot.system.config;
 
 import com.joey.boot.system.filter.AuthTokenFilter;
-import com.joey.boot.system.handler.AuthAccessDeniedHandler;
-import com.joey.boot.system.handler.AuthenticationEntryPointHandler;
-import com.joey.boot.system.utils.TokenManager;
 import com.joey.boot.system.service.impl.UserDetailsServiceImpl;
+import com.joey.boot.system.utils.TokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -72,9 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/role/**", "/user/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                 // 其他都验证 TODO
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+                .anyRequest().authenticated();
         // filter
         http.addFilter(new AuthTokenFilter(authenticationManager(), tokenManager));
     }

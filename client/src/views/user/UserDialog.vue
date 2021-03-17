@@ -40,7 +40,7 @@
           <el-option
             v-for="role in roleList"
             :key="role.code"
-            :value="role.code"
+            :value="role.name"
             :label="role.desc"
           ></el-option>
         </el-select>
@@ -68,9 +68,10 @@ import {
   toRefs,
 } from "vue";
 import { useStore } from "vuex";
-import { User, addUser } from "../../api/user";
+import { User, addUser, updateUser } from "../../api/user";
 import { RootState } from "../../store";
 import { OpType } from "../../utils/types";
+import { ElMessage } from "element-plus";
 
 interface State {
   dialogVisible: boolean;
@@ -82,12 +83,13 @@ interface State {
 const initForm = (): Partial<User> => ({
   username: "",
   nickname: "",
-  role: 1,
+  role: "USER",
 });
 
 export default defineComponent({
   name: "UserDialog",
-  setup() {
+  emits: ["get-list"],
+  setup(props, { emit }) {
     const store = useStore<RootState>();
     const formEl = ref<any>(null);
     const state = reactive<State>({
@@ -111,20 +113,25 @@ export default defineComponent({
       formEl.value?.resetFields();
       state.op = op;
       if (form) {
+        state.form = reactive(form);
+      } else {
+        state.form = reactive(initForm());
       }
     };
-    onMounted(() => {
-      store.dispatch("getRoleList");
-    });
     const onSubmit = async () => {
       try {
         state.loading = true;
         const valid = await formEl.value?.validate();
         if (valid) {
-          const { data } = await addUser(toRaw(state.form));
-          if (data) {
-            console.log(data);
+          if (state.op === "add") {
+            const { data } = await addUser(toRaw(state.form));
+            ElMessage.success(data);
+          } else if (state.op === "update") {
+            const { data } = await updateUser(toRaw(state.form));
+            ElMessage.success(data);
           }
+          emit("get-list");
+          state.dialogVisible = false;
         }
       } catch (error) {
         console.error(error);
