@@ -1,25 +1,25 @@
 <template>
-  <div class="w-full h-screen overflow-hidden flex">
+  <el-container class="h-screen overflow-hidden">
     <Sider />
-    <main class="flex-1">
+    <el-container direction="vertical">
       <AppHeader />
       <AppMain />
-    </main>
-  </div>
+    </el-container>
+  </el-container>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import AppHeader from './AppHeader.vue'
-import Sider from './Sider/index.vue'
-import AppMain from './AppMain.vue'
+import { defineComponent } from "vue";
+import AppHeader from "./AppHeader.vue";
+import Sider from "./Sider/index.vue";
+import AppMain from "./AppMain.vue";
 
 export default defineComponent({
-  name: 'Layout',
+  name: "Layout",
   components: {
     AppHeader,
     Sider,
     AppMain,
   },
-})
+});
 </script>
