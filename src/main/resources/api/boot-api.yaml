@@ -25,11 +25,11 @@ paths:
                   type: string
                   format: binary
       responses:
-        200:
+        "200":
           description: ok
-        402:
+        "402":
           description: PAYMENT_REQUIRED-上传的文件为空
-        500:
+        "500":
           description: INTERNAL_SERVER_ERROR-上传失败
   /common/uploads:
     post:
@@ -49,21 +49,33 @@ paths:
                     type: string
                     format: binary
       responses:
-        200:
+        "200":
           description: ok
-        402:
+        "402":
           description: PAYMENT_REQUIRED-上传的文件为空
-        500:
+        "500":
           description: INTERNAL_SERVER_ERROR-上传失败
 components:
   securitySchemes:
-    bearerAuth:            # arbitrary name for the security scheme
+    bearerAuth: # arbitrary name for the security scheme
       type: http
       scheme: bearer
-      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
-
+      bearerFormat: JWT    # optional, arbitrary value for documentation
+  schemas:
+    User:
+      type: "object"
+      properties:
+        username:
+          type: "string"
+          description: "username"
+        password:
+          type: "string"
+          description: "password"
+      xml:
+        name: "User"
 # 2) Apply the security globally to all operations
 security:
-  - bearerAuth: []         # use the same name as above
-
-  
+  - bearerAuth: [ ]         # use the same name as above
+externalDocs:
+  description: "swagger-doc"
+  url: "https://swagger.io/docs/specification/basic-structure/"
