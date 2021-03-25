@@ -16,8 +16,8 @@ import java.io.IOException;
 public class AuthAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
-        accessDeniedException = new AccessDeniedException("Sorry you don not enough permissions to access it!");
-        log.error(String.valueOf(accessDeniedException));
+//        accessDeniedException = new AccessDeniedException("Sorry you don not enough permissions to access it!");
+        log.error("AuthAccessDenied:"+accessDeniedException.getMessage());
         response.sendError(HttpServletResponse.SC_FORBIDDEN, accessDeniedException.getMessage());
     }
 }

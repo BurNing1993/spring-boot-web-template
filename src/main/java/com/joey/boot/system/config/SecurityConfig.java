@@ -1,6 +1,8 @@
 package com.joey.boot.system.config;
 
 import com.joey.boot.system.filter.AuthTokenFilter;
+import com.joey.boot.system.handler.AuthAccessDeniedHandler;
+import com.joey.boot.system.handler.AuthenticationEntryPointHandler;
 import com.joey.boot.system.service.impl.UserDetailsServiceImpl;
 import com.joey.boot.system.utils.TokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,8 +56,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * 异常处理
      * http.exceptionHandling()
-     *         .authenticationEntryPoint(new AuthenticationEntryPointHandler())
-     *         .accessDeniedHandler(new AuthAccessDeniedHandler());
+     * .authenticationEntryPoint(new AuthenticationEntryPointHandler())
+     * .accessDeniedHandler(new AuthAccessDeniedHandler());
+     *
      * @param http
      * @throws Exception
      */
@@ -73,5 +76,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
         // filter
         http.addFilter(new AuthTokenFilter(authenticationManager(), tokenManager));
+        http.exceptionHandling()
+                .authenticationEntryPoint(new AuthenticationEntryPointHandler())
+                .accessDeniedHandler(new AuthAccessDeniedHandler());
     }
 }
