@@ -5,7 +5,7 @@ spring:
     username: root
     password: 123456
   mvc:
-    static-path-pattern: /res/**
+    static-path-pattern: /static/**
   web:
     resources:
       static-locations: [ "file:/static/" ]

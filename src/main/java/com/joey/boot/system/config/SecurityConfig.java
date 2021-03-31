@@ -69,7 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/auth/**").permitAll()
-                .antMatchers("/public/**").permitAll()
+                .antMatchers("/public/**","/static/**","/common/**").permitAll()
                 .antMatchers("/role/**", "/user/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                 // 其他都验证 TODO
